@@ -84,6 +84,11 @@ function Editor (loadingFromGist, storage) {
     }
   }
 
+  this.renameFile = function (oldName, newName) {
+    storage.rename(utils.fileKey(oldName), utils.fileKey(newName))
+    this.renameSession(utils.fileKey(oldName), utils.fileKey(newName))
+  }
+
   this.hasFile = function (name) {
     return this.getFiles().indexOf(utils.fileKey(name)) !== -1
   }

@@ -204,8 +204,7 @@ var run = function () {
           editor.hasFile(newName)
             ? 'Are you sure you want to overwrite: ' + newName + ' with ' + originalName + '?'
             : 'Are you sure you want to rename: ' + originalName + ' to ' + newName + '?')) {
-        storage.rename(utils.fileKey(originalName), utils.fileKey(newName))
-        editor.renameSession(utils.fileKey(originalName), utils.fileKey(newName))
+        editor.renameFile(originalName, newName)
         editor.setCacheFile(utils.fileKey(newName))
       }
 
