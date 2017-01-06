@@ -47,7 +47,7 @@ var run = function () {
       var content = files[f].content
       storage.loadFile(key, content)
     }
-    editor.setCacheFile(utils.fileKey(Object.keys(files)[0]))
+    editor.switchToFile(Object.keys(files)[0])
     updateFiles()
   }
 
@@ -205,7 +205,7 @@ var run = function () {
             ? 'Are you sure you want to overwrite: ' + newName + ' with ' + originalName + '?'
             : 'Are you sure you want to rename: ' + originalName + ' to ' + newName + '?')) {
         editor.renameFile(originalName, newName)
-        editor.setCacheFile(utils.fileKey(newName))
+        editor.switchToFile(newName)
       }
 
       updateFiles()
@@ -228,14 +228,14 @@ var run = function () {
     return false
   })
 
-  function swicthToFile (file) {
-    editor.setCacheFile(utils.fileKey(file))
+  function switchToFile (file) {
+    editor.switchToFile(file)
     updateFiles()
   }
 
   function showFileHandler (ev) {
     ev.preventDefault()
-    swicthToFile($(this).find('.name').text())
+    switchToFile($(this).find('.name').text())
     return false
   }
 
@@ -456,7 +456,7 @@ var run = function () {
 
   var offsetToLineColumnConverter = new OffsetToLineColumnConverter(compiler.event)
 
-  var transactionDebugger = new Debugger('#debugger', editor, compiler, executionContext.event, swicthToFile, offsetToLineColumnConverter)
+  var transactionDebugger = new Debugger('#debugger', editor, compiler, executionContext.event, switchToFile, offsetToLineColumnConverter)
   transactionDebugger.addProvider('vm', executionContext.vm())
   transactionDebugger.switchProvider('vm')
   transactionDebugger.addProvider('injected', executionContext.web3())

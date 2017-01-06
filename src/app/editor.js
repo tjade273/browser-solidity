@@ -47,6 +47,10 @@ function Editor (loadingFromGist, storage) {
     fileReader.readAsText(file)
   }
 
+  this.switchToFile = function (name) {
+    this.setCacheFile(utils.fileKey(name))
+  }
+
   this.setCacheFileContent = function (content) {
     storage.set(SOL_CACHE_FILE, content)
   }
