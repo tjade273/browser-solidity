@@ -35,6 +35,12 @@ function Editor (loadingFromGist, storage) {
     this.setCacheFileContent('')
   }
 
+  this.removeFile = function (name) {
+    storage.remove(utils.fileKey(name))
+    this.removeSession(utils.fileKey(name))
+    this.setNextFile(utils.fileKey(name))
+  }
+
   this.uploadFile = function (file, callback) {
     var fileReader = new FileReader()
     var cacheName = utils.fileKey(file.name)

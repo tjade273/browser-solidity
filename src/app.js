@@ -220,9 +220,7 @@ var run = function () {
     var name = $(this).parent().find('.name').text()
 
     if (confirm('Are you sure you want to remove: ' + name + ' from local storage?')) {
-      storage.remove(utils.fileKey(name))
-      editor.removeSession(utils.fileKey(name))
-      editor.setNextFile(utils.fileKey(name))
+      editor.removeFile(name)
       updateFiles()
     }
     return false
