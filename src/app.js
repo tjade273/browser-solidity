@@ -238,7 +238,7 @@ var run = function () {
   }
 
   function activeFileTab () {
-    var name = utils.fileNameFromKey(editor.getCacheFile())
+    var name = editor.getCurrentFileName()
     return $('#files .file').filter(function () { return $(this).find('.name').text() === name })
   }
 
@@ -482,7 +482,7 @@ var run = function () {
 
   function runCompiler () {
     var files = {}
-    var target = utils.fileNameFromKey(editor.getCacheFile())
+    var target = editor.getCurrentFileName()
 
     files[target] = editor.getValue()
 

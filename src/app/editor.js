@@ -53,6 +53,10 @@ function Editor (loadingFromGist, storage) {
     fileReader.readAsText(file)
   }
 
+  this.getCurrentFileName = function () {
+    return utils.fileNameFromKey(editor.getCacheFile())
+  }
+
   this.switchToFile = function (name) {
     this.setCacheFile(utils.fileKey(name))
   }
