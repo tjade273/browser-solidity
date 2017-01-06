@@ -484,7 +484,7 @@ var run = function () {
     var files = {}
     var target = editor.getCurrentFileName()
 
-    files[target] = editor.getValue()
+    files[target] = editor.getCurrentFileContent()
 
     compiler.compile(files, target)
   }
@@ -494,7 +494,7 @@ var run = function () {
   var saveTimeout = null
 
   function editorOnChange () {
-    var input = editor.getValue()
+    var input = editor.getCurrentFileContent()
 
     // if there's no change, don't do anything
     if (input === previousInput) {
